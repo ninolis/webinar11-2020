@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form-placeholder</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <!-- Підтверджуємо політику конфіденційності
+We confirm the privacy policy -->
+
+  <body>
+    <!-- read guide!!! -->
+    <!-- ** text. tel, email fields: Виводимо ім'я, телефон та пошту
+    Display name, phone number and email -->
+    <form class="js-speaker-form">
+      <p>Display name, phone number and email</p>
+
+      <label for="user-first-name">Ім'я</label>
+      <!-- autofocus only on one element on page -->
+      <input
+        type="text"
+        name="user-first-name"
+        id="user-first-name"
+        autofocus
+        placeholder="Your first name"
+      />
+      <br /><br />
+      <label for="user-last-name">Прізвище</label>
+      <input
+        type="text"
+        name="user-last-name"
+        id="user-last-name"
+        placeholder="Your Last name"
+      />
+      <br /><br />
+      <label for="tel">Телефон</label>
+      <input
+        type="tel"
+        name="phone"
+        id="tel"
+        autocomplete="on"
+        placeholder="+380 99-999-9999"
+      />
+      <br /><br />
+      <label for="email">Ел.пошта</label>
+      <input type="email" name="email" id="email" />
+      <br />
+      <br />
+      <label for="password">Пароль</label>
+      <input type="password" name="password" id="password" autocomplete="off" />
+      <br />
+      <!-- ** Checkboxes: Вибираємо теми, на які хочемо робити доповідь
+        Select the topics you would like to report on -->
+      <p>Select the topics you would like to report on</p>
+      <p>many of many</p>
+      <!-- name must be the same not topic-1, topic-2, topic-3 ect. -->
+      <!-- fieldset - can't use flexbox so use div -->
+      <div role="group">
+        <input type="checkbox" name="topic" value="HTML" id="html" checked />
+        <label for="html">HTML</label>
+        <br />
+        <label for="css">CSS</label>
+        <input type="checkbox" name="topic" value="CSS" id="css" />
+        <br />
+        <input
+          type="checkbox"
+          name="topic"
+          value="javaScript"
+          id="javascript"
+        />
+        <label for="javascript">javaScript</label>
+        <br />
+      </div>
+      <!-- ** Radio button: Вибираємо свій рівень розробника
+      Choose your developer level -->
+      <p>Choose your developer level</p>
+      <p>one of many</p>
+      <div role="group">
+        <input type="radio" name="level" value="junior" id="junior" />
+        <label for="junior">Junior</label>
+        <br />
+        <input type="radio" name="level" value="middle" id="middle" checked />
+        <label for="middle">Middle</label>
+        <br />
+        <input type="radio" name="level" value="senior" id="senior" />
+        <label for="senior">Senior</label>
+      </div>
+      <br />
+      <!-- Вибираємо час доповіді https://caniuse.com/#search=datetime-local
+Choose the time of the report https://caniuse.com/#search=datetime-local -->
+
+      <p>Choose date</p>
+      <label for="date">Date</label>
+      <input
+        type="date"
+        name="date"
+        id="date"
+        min="2022-09-01"
+        max="2022-09-07"
+      />
+      <br />
+      <p>Choose time</p>
+      <label for="time">Time</label>
+      <input type="time" name="time" id="time" min="10:30" max="12:12" />
+      <br />
+      <br />
+      <p>Choose Date and Time</p>
+      <label for="datetime">Date and Time</label>
+      <input
+        type="datetime-local"
+        name="datetime"
+        id="datetime"
+        value="2022-09-05T12:30"
+        min="2022-09-01T10:10"
+        max="2022-09-07T12:12"
+      />
+      <br />
+
+      <!-- ** Select: Вибираємо, на кого орієнтована доповідь
+        Choose who the report is aimed at -->
+      <!-- The second value will be selected initially -->
+      <label for="choice">For</label>
+      <select name="choice" id="choice">
+        <option value="boss">Boss</option>
+        <option value="developer" selected>Developers</option>
+        <option value="front-end">Front End</option>
+      </select>
+      <br />
+
+      <!-- Завантажуємо презентацію
+Loading the presentation -->
+      <p>Load file for presentation</p>
+      <label for="pdf">Load file-presentation</label>
+      <input type="file" name="pdf" id="pdf" />
+      <br /><br />
+
+      <!-- Залишаємо коментар
+Leave a comment -->
+      <!-- <p>Leave a comment</p> -->
+      <label for="comments">Comments:</label>
+      <textarea
+        name="comments"
+        id="comments"
+        rows="5"
+        placeholder="Leave a comment..."
+      ></textarea>
+      <br /><br />
+      <!-- ** button OR input button: Вибираємо кнопки
+        Select the buttons -->
+      <button type="submit">Відправити заявку</button>
+      <!-- <input type="button" value="Відправити заявку" /> Difficult to use css -->
+    </form>
+    <script>
+      (() => {
+        document
+          .querySelector('.js-speaker-form')
+          .addEventListener('submit', e => {
+            e.preventDefault();
+
+            new FormData(e.currentTarget).forEach((value, name) =>
+              console.log(`${name}: ${value}`),
+            );
+
+            e.currentTarget.reset();
+          });
+      })();
+    </script>
+  </body>
+</html>
