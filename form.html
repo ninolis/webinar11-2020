@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <!-- Виводимо ім'я, телефон та пошту
+Display name, phone number and email -->
+
+  <!-- Вибираємо теми, на які хочемо робити доповідь
+Select the topics you would like to report on -->
+
+  <!-- Вибираємо свій рівень розробника
+Choose your developer level -->
+
+  <!-- Вибираємо, на кого орієнтована доповідь
+Choose who the report is aimed at -->
+
+  <!-- Вибираємо час доповіді https://caniuse.com/#search=datetime-local
+Choose the time of the report https://caniuse.com/#search=datetime-local -->
+
+  <!-- Завантажуємо презентацію
+Loading the presentation -->
+
+  <!-- Залишаємо коментар
+Leave a comment -->
+
+  <!-- Підтверджуємо політику конфіденційності
+We confirm the privacy policy -->
+
+  <body>
+    <!-- read guide!!! -->
+    <form class="js-speaker-form">
+      <label for="user-first-name">Ім'я</label>
+      <input type="text" name="user-first-name" id="user-first-name" />
+      <br />
+      <label for="user-last-name">Прізвище</label>
+      <input type="text" name="user-last-name" id="user-last-name" />
+      <br />
+      <label for="tel">Телефон</label>
+      <input type="tel" name="phone" id="tel" />
+      <br />
+      <label for="email">Ел.пошта</label>
+      <input type="email" name="email" id="email" />
+      <br />
+      <button type="submit">Відправити заявку</button>
+      <!-- <input type="button" value="Відправити заявку" /> Difficult to use css -->
+    </form>
+    <script>
+      (() => {
+        document
+          .querySelector('.js-speaker-form')
+          .addEventListener('submit', e => {
+            e.preventDefault();
+
+            new FormData(e.currentTarget).forEach((value, name) =>
+              console.log(`${name}: ${value}`),
+            );
+
+            e.currentTarget.reset();
+          });
+      })();
+    </script>
+  </body>
+</html>
